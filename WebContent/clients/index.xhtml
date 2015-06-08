@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+        
+        	<div class="container">
+        	
+        		<p><h:link value="Novo cliente" outcome="create" class="btn btn-primary" /></p>
+        	
+	        	<h1>Clientes cadastrados</h1>
+	        	
+	        	<p><h:messages showDetail="true" /></p>
+	        	
+	        	<h:form id="indexClient">
+	        	
+	        		<h:dataTable var="client" value="#{clientBean.indexClient}" class="table table-hover">
+	        			<h:column>
+	        				<f:facet name="header">ID</f:facet>
+	        				<h:outputText value="#{client.id}"></h:outputText>
+	        			</h:column>
+	        			
+	        			<h:column>
+	        				<f:facet name="header">Nome</f:facet>
+	        				<h:outputText value="#{client.name}"></h:outputText>
+	        			</h:column>
+	        			
+	        			<h:column>
+	        				<f:facet name="header">Email</f:facet>
+	        				<h:outputText value="#{client.email}"></h:outputText>
+	        			</h:column>
+	        			
+	        			<h:column>
+	        				<f:facet name="header">Gênero</f:facet>
+	        				<h:outputText rendered="#{client.gender == 0}" value="Masculino" />
+	        				<h:outputText rendered="#{client.gender == 1}" value="Feminino" />
+	        			</h:column>
+	        			
+	        			<h:column>
+	        				<f:facet name="header">Operações</f:facet>
+	        				<h:commandLink value="Editar" action="#{clientBean.updateClient(client)}"/>
+	        				<h:commandLink value="Submit" action="#{bean.submit}">
+							    <f:setPropertyActionListener target="#{bean.otherBean}" value="#{otherBean}" />
+							</h:commandLink>
+	        			</h:column>
+	        		</h:dataTable>
+	        	
+	        	</h:form>
+			
+			</div>
+
+        </h:body>
+
+    </f:view>
+</html>
+

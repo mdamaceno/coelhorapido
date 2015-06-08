@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+        
+        	<div class="container">
+        	
+        		<p><h:link value="Voltar" outcome="index" class="btn btn-primary" /></p>
+        	
+	        	<h1>Registro de clientes</h1>
+	        	
+	        	<h:messages showDetail="true" />
+	
+				<h:form>
+					<div class="form-group">
+						<h:outputLabel value="Nome: " for="client_name" />
+						<h:inputText id="client_name" value="#{clientBean.client.name}" class="form-control" />
+					</div>
+					
+					<div class="form-group">
+						<h:outputLabel value="Endereço: " for="client_address" />
+						<h:inputText id="client_address" value="#{clientBean.client.address}" class="form-control" />
+					</div>
+					
+					<div class="radio">
+						<h:outputLabel value="Gênero: " for="client_gender" />
+						<h:selectOneRadio value="#{clientBean.client.gender}" layout="custom">
+							<f:selectItem itemValue="0" itemLabel="Masculino" />
+							<f:selectItem itemValue="1" itemLabel="Feminino" />
+						</h:selectOneRadio>
+					</div>
+					
+					<div class="form-group">
+						<h:outputLabel value="Email: " for="client_email" />
+						<h:inputText id="client_email" value="#{clientBean.client.email}" class="form-control" />
+					</div>
+					
+					<div class="form-group">
+						<h:outputLabel value="Senha: " for="client_password" />
+						<h:inputSecret id="client_password" value="#{clientBean.client.password}" class="form-control" />
+					</div>
+					
+					<h:commandButton value="Criar" action="#{clientBean.saveClient}" class="btn btn-primary" />
+				</h:form>
+			
+			</div>
+
+        </h:body>
+
+    </f:view>
+</html>
+
